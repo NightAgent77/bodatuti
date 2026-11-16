@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Te invitamos — 3 de enero de 2027</title>
+    <meta
+      name="description"
+      content="Te invitamos a nuestra celebración el domingo 3 de enero de 2027 a las 4:00 p.m. en el Centro Comunal Palmas Altas, Barceloneta."
+    />
+    <meta name="theme-color" content="#f4efe6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card">
+      <div class="wash wash-a" aria-hidden="true"></div>
+      <div class="wash wash-b" aria-hidden="true"></div>
+
+      <figure class="portrait">
+        <img
+          src="images/pareja.jpg"
+          alt="La pareja sonríe junta entre los árboles, con la luz del atardecer detrás."
+          width="686"
+          height="849"
+        />
+      </figure>
+
+      <h1>
+        <span class="script">Te invitamos</span>
+        <span class="line">a nuestra celebración</span>
+      </h1>
+
+      <svg class="mark" viewBox="0 0 28 16" aria-hidden="true">
+        <path d="M2 2.5 L14 13.5 L26 2.5" />
+      </svg>
+
+      <p class="when">
+        <time datetime="2027-01-03T16:00-04:00">
+          <span class="weekday">Domingo</span>
+          <span class="day">3 de enero</span>
+          <span class="year">2027</span>
+          <span class="hour">4:00 p.m.</span>
+        </time>
+      </p>
+
+      <svg class="mark" viewBox="0 0 28 16" aria-hidden="true">
+        <path d="M2 2.5 L14 13.5 L26 2.5" />
+      </svg>
+
+      <p class="label">Celebración</p>
+      <h2>Centro Comunal Palmas Altas</h2>
+      <address>
+        <a
+          href="https://www.google.com/maps/search/?api=1&amp;query=Centro%20Comunal%20Palmas%20Altas%2C%201%20Calle%207%2C%20Barceloneta%2C%20PR%2000617"
+          >1 Calle 7<br />Barceloneta, PR 00617<br />Estados Unidos</a
+        >
+      </address>
+
+      <p class="gift">
+        Su presencia es nuestro mayor regalo y lo que más deseamos compartir
+        con ustedes en este día tan especial.
+      </p>
+      <p class="lista-link"><a href="lista.html">Ver registrados</a></p>
+    </main>
+
+    <button type="button" class="register" aria-haspopup="dialog" aria-controls="registro">
+      Anotar o Registrar
+    </button>
+
+    <div class="veil" hidden>
+      <div
+        class="sheet"
+        id="registro"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="registro-titulo"
+      >
+        <button type="button" class="sheet-close" aria-label="Cerrar">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h2 id="registro-titulo">Anotar o Registrar</h2>
+        <p class="sheet-note">Deja tu nombre, teléfono y email. Solo nosotros vemos estos datos.</p>
+
+        <form id="form-registro" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" autocomplete="name" maxlength="80" aria-describedby="error-nombre" required />
+            <p id="error-nombre" class="field-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="telefono">Teléfono</label>
+            <input
+              id="telefono"
+              name="telefono"
+              type="tel"
+              inputmode="tel"
+              autocomplete="tel"
+              maxlength="20"
+              aria-describedby="error-telefono"
+              required
+            />
+            <p id="error-telefono" class="field-error" hidden></p>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              maxlength="120"
+              aria-describedby="error-email"
+              required
+            />
+            <p id="error-email" class="field-error" hidden></p>
+          </div>
+          <button type="submit">Anotar</button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </form>
+
+        <div class="sheet-done" hidden>
+          <p class="sheet-thanks"></p>
+          <button type="button" class="sheet-ok">Cerrar</button>
+        </div>
+      </div>
+    </div>
+    <script src="registrar.js"></script>
+  </body>
+</html>

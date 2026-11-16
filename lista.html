@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Personas registradas</title>
+    <meta name="theme-color" content="#f4efe6" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="card lista">
+      <p class="lista-back"><a href="index.html">Volver a la invitación</a></p>
+      <h1>Personas registradas</h1>
+      <p class="lista-lead">Aquí aparecen quienes anotaron su nombre, teléfono y email.</p>
+
+      <form id="clave-form" class="clave-form">
+        <label for="clave">Clave</label>
+        <input id="clave" name="clave" type="password" autocomplete="current-password" required />
+        <button type="submit">Ver la lista</button>
+        <p id="clave-error" class="field-error" hidden>La clave no coincide.</p>
+      </form>
+
+      <section id="resultado" hidden>
+        <p id="cuenta" class="lista-count"></p>
+        <div id="vacio" class="lista-empty" hidden>
+          <p>Todavía no hay personas registradas.</p>
+        </div>
+        <ul id="personas" class="personas"></ul>
+      </section>
+    </main>
+    <script src="lista.js"></script>
+  </body>
+</html>
