@@ -1,3 +1,6 @@
+const SUPABASE_URL = "https://kqfkegovkxhfncmhqfry.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_DxPzJEo2fECPGIJrJ8CpGw_5xd1Y37Y";
+
 const openButton = document.querySelector(".register");
 const veil = document.querySelector(".veil");
 const sheet = document.querySelector(".sheet");
@@ -109,19 +112,26 @@ form.addEventListener("submit", async (event) => {
   submitButton.disabled = true;
   submitButton.textContent = "Guardando…";
   try {
-    const response = await fetch("/api/invitados", {
+    const response = await fetch(`${SUPABASE_URL}/rest/v1/rpc/registrar`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        apikey: SUPABASE_PUBLISHABLE_KEY,
+        Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+      },
       body: JSON.stringify({
-        nombre: nombre.trim(),
-        telefono: telefono.trim(),
-        email: email.trim(),
+        p_nombre: nombre.trim(),
+        p_telefono: telefono.trim(),
+        p_email: email.trim(),
       }),
     });
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
-      if (body.campo) showError(body.campo, body.error);
-      else status.textContent = body.error || "No se pudo guardar. Inténtalo de nuevo.";
+      const message = body.message || body.error || "No se pudo guardar. Inténtalo de nuevo.";
+      if (message.includes("nombre")) showError("nombre", message);
+      else if (message.includes("teléfono")) showError("telefono", message);
+      else if (message.includes("email")) showError("email", message);
+      else status.textContent = message;
       return;
     }
 
@@ -136,6 +146,6 @@ form.addEventListener("submit", async (event) => {
     status.textContent = "No se pudo guardar. Inténtalo de nuevo.";
   } finally {
     submitButton.disabled = false;
-    submitButton.textContent = "Anotar";
+    submitButton.textContent = "Anotar o Registrar";
   }
 });
